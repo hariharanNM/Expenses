@@ -39,13 +39,16 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const jwt = ctx.req.cookies.token;
 
   if (jwt) {
-    const res = await fetch(`https://expenses-beige-seven.vercel.app/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: jwt,
-      },
-    });
+    const res = await fetch(
+      `https://expenses-beige-seven.vercel.app/api/dasboard`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: jwt,
+        },
+      }
+    );
     let response = await res.json();
 
     return {
